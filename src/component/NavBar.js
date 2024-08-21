@@ -33,9 +33,9 @@ const NavBar = () => {
       <div className="mx-auto w-16">
         <img src="./image/logo.png" alt="" />
       </div>
-      <ul className="mt-5 flex justify-center gap-4">
+      <ul className="mt-5 hidden justify-center gap-4 sm:flex">
         {menuList.map((menu) => (
-          <li>{menu}</li>
+          <li key={menu}>{menu}</li>
         ))}
       </ul>
     </div>
