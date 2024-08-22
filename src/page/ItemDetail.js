@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const ItemDetail = () => {
   return (
-    <div>ItemDetail</div>
-  )
-}
+    <div className="container mx-auto">
+      <p className='text-4xl text-center font-bold'>Item Detail</p>
+    </div>
+  );
+};
 
-export default ItemDetail
+export default ItemDetail;
