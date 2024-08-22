@@ -5,7 +5,8 @@ import ItemCard from "../component/ItemCard";
 const MainPage = () => {
   const [productList, setProductList] = useState([]);
   const getProducts = async () => {
-    let url = `http://localhost:3004/products/`;
+    // let url = `http://localhost:3004/products/`;
+    let url = `http://my-json-server.typicode.com/Sungmin-Kim-Dev/REACT-shopping-mall-multipage/products/`;
     let response = await fetch(url);
     let data = await response.json();
     // console.table(data);
