@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import ItemCard from "../component/ItemCard";
 import { useNavigate } from "react-router-dom";

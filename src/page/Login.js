@@ -6,65 +6,79 @@ const Login = ({ setAuthenticate }) => {
   const navigate = useNavigate();
   const loginUser = (e) => {
     e.preventDefault();
-    console.log("log in user function", e);
     setAuthenticate(true);
     navigate("/");
   };
   return (
-    <div className="container mx-auto">
-      <div className="mx-auto my-20 max-w-md">
-        <div className="text-center">
-          <h1 className="my-3 text-3xl font-semibold text-gray-700">Log in</h1>
-          <p className="text-gray-500">Log in to access your account</p>
+    <div className="mx-auto mt-8 w-full max-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow sm:p-6 md:p-8">
+      <form className="space-y-6" onSubmit={(e) => loginUser(e)}>
+        <h5 className="text-xl font-medium text-gray-900">Sign In</h5>
+        <div>
+          <label
+            htmlFor="email"
+            className="mb-2 block text-sm font-medium text-gray-900"
+          >
+            Your email
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-red-500 focus:ring-red-500"
+            placeholder="name@company.com"
+            // required
+          />
         </div>
-        <div className="m-7">
-          <form onSubmit={(e) => loginUser(e)} className="space-y-8">
-            <div className="email-box">
-              <label
-                htmlFor="email"
-                className="mb-2 block text-sm text-gray-600"
-              >
-                Email Address
-              </label>
+        <div>
+          <label
+            htmlFor="password"
+            className="mb-2 block text-sm font-medium text-gray-900"
+          >
+            Your password
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="••••••••"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-red-500 focus:ring-red-500"
+            // required
+          />
+        </div>
+        <div className="flex items-start">
+          <div className="flex items-start">
+            <div className="flex h-5 items-center">
               <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="you@company.com"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-100"
+                id="remember"
+                type="checkbox"
+                value=""
+                className="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-red-300"
               />
             </div>
-            <div className="password-box">
-              <div className="mb-2 flex justify-between">
-                <label htmlFor="password" className="text-sm text-gray-600">
-                  Password
-                </label>
-                <a
-                  href="#!"
-                  className="text-sm text-gray-400 hover:text-red-500 focus:text-red-500 focus:outline-none"
-                >
-                  Forgot password?
-                </a>
-              </div>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Your Password"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-100"
-              />
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="w-full rounded-md bg-red-400 px-3 py-4 text-white hover:bg-red-500 focus:outline-none"
-              >
-                Log in
-              </button>
-            </div>
-          </form>
+            <label
+              htmlFor="remember"
+              className="ms-2 text-sm font-medium text-gray-900"
+            >
+              Remember me
+            </label>
+          </div>
+          <a href="#" className="ms-auto text-sm text-red-700 hover:underline">
+            Lost Password?
+          </a>
         </div>
-      </div>
+        <button
+          type="submit"
+          className="w-full rounded-lg bg-red-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300"
+        >
+          Login to your account
+        </button>
+        <div className="text-sm font-medium text-gray-500">
+          Not registered?{" "}
+          <a href="#" className="text-red-700 hover:underline">
+            Create account
+          </a>
+        </div>
+      </form>
     </div>
   );
 };
