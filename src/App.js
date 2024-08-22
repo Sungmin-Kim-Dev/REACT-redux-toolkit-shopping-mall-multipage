@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import MainPage from "./page/MainPage";
@@ -15,13 +15,25 @@ import NavBar from "./component/NavBar";
 // 7. Items can be searched with keywords.
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false)
+  const [authenticate, setAuthenticate] = useState(false);
+  useEffect(() => {
+    console.log("Authenticate:", authenticate);
+  }, [authenticate]);
   return (
     <div className="App">
-      <NavBar></NavBar>
+      <NavBar
+        authenticate={authenticate}
+        setAuthenticate={setAuthenticate}
+      ></NavBar>
       <Routes>
-        <Route path="/" element={<MainPage />}></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route
+          path="/"
+          element={<MainPage authenticate={authenticate} />}
+        ></Route>
+        <Route
+          path="/login"
+          element={<Login setAuthenticate={setAuthenticate} />}
+        ></Route>
         <Route path="/item/:id" element={<ItemDetail />}></Route>
       </Routes>
     </div>

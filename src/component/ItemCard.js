@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, itemCardClick }) => {
   return (
-    <div className="group/item cursor-pointer shadow-lg">
+    <div className="group/item cursor-pointer shadow-lg" onClick={() => itemCardClick(item?.id)}>
       <img
         src={item?.img}
         alt=""

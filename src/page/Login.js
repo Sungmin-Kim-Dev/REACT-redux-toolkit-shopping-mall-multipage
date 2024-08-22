@@ -1,9 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setAuthenticate }) => {
+  const navigate = useNavigate();
   const loginUser = (e) => {
     e.preventDefault();
     console.log("log in user function", e);
+    setAuthenticate(true);
+    navigate("/");
   };
   return (
     <div className="container mx-auto">
