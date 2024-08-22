@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import MainPage from "./page/MainPage";
@@ -14,6 +15,7 @@ import NavBar from "./component/NavBar";
 // 7. Items can be searched with keywords.
 
 function App() {
+  const [authenticate, setAuthenticate] = useState(false)
   return (
     <div className="App">
       <NavBar></NavBar>

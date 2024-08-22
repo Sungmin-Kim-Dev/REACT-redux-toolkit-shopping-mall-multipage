@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const menuList = [
@@ -15,7 +16,7 @@ const NavBar = () => {
     "Sustainability",
   ];
   return (
-    <div>
+    <div className='sticky top-0 z-10 bg-white pb-6'>
       <div className="mr-4 flex justify-end gap-8 p-3">
         <button className="search-btn border-b-2 p-1">
           <FontAwesomeIcon icon={faSearch} className="mr-2" />
@@ -25,14 +26,14 @@ const NavBar = () => {
             className="w-32 focus-visible:outline-0"
           />
         </button>
-        <button className="login-btn flex items-center gap-2">
+        <Link to="/login" className="login-btn flex items-center gap-2">
           <FontAwesomeIcon icon={faUser} />
           <span>Log in</span>
-        </button>
+        </Link>
       </div>
-      <div className="mx-auto w-16">
+      <Link to="/" className="block mx-auto w-16">
         <img src="./image/logo.png" alt="" />
-      </div>
+      </Link>
       <ul className="mt-5 hidden justify-center gap-4 sm:flex">
         {menuList.map((menu) => (
           <li key={menu}>{menu}</li>
