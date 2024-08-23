@@ -21,6 +21,14 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
     "Sale",
     "Sustainability",
   ];
+  const search = (event) => {
+    if (event.key === "Enter") {
+      // console.log("key down:", event.key);
+      const keyword = event.target.value;
+      navigate(`/?q=${keyword}`);
+      event.target.value = "";
+    }
+  };
   return (
     <div className="sticky top-0 z-10 bg-white pb-6">
       <div className="mr-4 flex justify-end gap-8 p-3">
@@ -30,6 +38,7 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
             type="text"
             placeholder="Enter Keywords"
             className="w-32 focus-visible:outline-0"
+            onKeyDown={(event) => search(event)}
           />
         </button>
         <button

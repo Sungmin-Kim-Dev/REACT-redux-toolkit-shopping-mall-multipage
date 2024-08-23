@@ -14,7 +14,7 @@ const ItemCard = ({ item }) => {
     >
       <img
         src={item?.img}
-        alt=""
+        alt={item?.title}
         className="mb-2 transition-all duration-300 group-hover/item:scale-105"
       />
       <div className="text-box space-y-1 p-4">

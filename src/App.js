@@ -4,8 +4,7 @@ import "./App.css";
 import MainPage from "./page/MainPage";
 import Login from "./page/Login";
 import NavBar from "./component/NavBar";
-import PrivateRoute from './route/PrivateRoute';
-
+import PrivateRoute from "./route/PrivateRoute";
 
 // 1. Pages: main, Log in, item detail
 // 2. Main page shows all items.
@@ -27,15 +26,15 @@ function App() {
         setAuthenticate={setAuthenticate}
       ></NavBar>
       <Routes>
-        <Route
-          path="/"
-          element={<MainPage />}
-        ></Route>
+        <Route path="/" element={<MainPage />}></Route>
         <Route
           path="/login"
           element={<Login setAuthenticate={setAuthenticate} />}
         ></Route>
-        <Route path="/item/:id" element={<PrivateRoute authenticate={authenticate} />}></Route>
+        <Route
+          path="/item/:id"
+          element={<PrivateRoute authenticate={authenticate} />}
+        ></Route>
       </Routes>
     </div>
   );
