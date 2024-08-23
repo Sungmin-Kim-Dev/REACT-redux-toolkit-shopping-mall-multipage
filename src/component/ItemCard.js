@@ -24,7 +24,7 @@ const ItemCard = ({ item }) => {
           Conscious Choice
         </div>
         <div className="text-xl font-medium">{item?.title}</div>
-        <div>\{item?.price.toLocaleString("ko-KR", "currency")}</div>
+        <div>₩{item?.price.toLocaleString("ko-KR", "currency")}</div>
         <div
           className={`text-sm text-gray-500 ${item?.new ? "invisible" : ""}`}
         >
