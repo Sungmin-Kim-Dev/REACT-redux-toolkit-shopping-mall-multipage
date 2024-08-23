@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -79,6 +80,9 @@ const Login = ({ setAuthenticate }) => {
           </a>
         </div>
       </form>
+      <p className="text-sm text-gray-700">
+        테스트 편의를 위해 "required"는 잠시 주석 처리!
+      </p>
     </div>
   );
 };

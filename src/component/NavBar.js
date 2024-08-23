@@ -3,6 +3,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = ({ authenticate, setAuthenticate }) => {
@@ -29,10 +31,35 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
       event.target.value = "";
     }
   };
+  const openMobileMenu = () => {
+    console.log("open");
+    document.getElementById("mobile-nav").classList.remove("hidden");
+    setTimeout(() => {
+      document
+        .getElementById("mobile-menu")
+        .classList.remove("-translate-x-full");
+    }, 100);
+  };
+  const closeMobileMenu = () => {
+    console.log("close");
+    document.getElementById("mobile-menu").classList.add("-translate-x-full");
+    setTimeout(() => {
+      document.getElementById("mobile-nav").classList.add("hidden");
+    }, 500);
+  };
   return (
     <div className="sticky top-0 z-10 bg-white pb-6">
-      <div className="mr-4 flex justify-end gap-8 p-3">
-        <button className="search-btn border-b-2 p-1">
+      <div className="relative mr-4 flex items-center justify-end gap-8 p-4">
+        <button
+          className="absolute left-4 top-4 p-2 text-xl sm:hidden"
+          onClick={openMobileMenu}
+        >
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+        <Link to="/" className="absolute left-20 top-4 block w-16 sm:hidden">
+          <img src="./image/logo.png" alt="" />
+        </Link>
+        <div className="search-btn border-b-2 p-1">
           <FontAwesomeIcon icon={faSearch} className="mr-2" />
           <input
             type="text"
@@ -40,7 +67,7 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
             className="w-32 focus-visible:outline-0"
             onKeyDown={(event) => search(event)}
           />
-        </button>
+        </div>
         <button
           onClick={() => loginButton()}
           className="login-btn flex items-center gap-2"
@@ -49,7 +76,7 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
           <span>Log {authenticate ? "out" : "in"}</span>
         </button>
       </div>
-      <Link to="/" className="mx-auto block w-16">
+      <Link to="/" className="mx-auto hidden w-16 sm:block">
         <img src="./image/logo.png" alt="" />
       </Link>
       <ul className="mt-5 hidden justify-center gap-4 sm:flex">
@@ -57,6 +84,28 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
           <li key={menu}>{menu}</li>
         ))}
       </ul>
+      <nav
+        id="mobile-nav"
+        className="fixed top-0 hidden size-full bg-black bg-opacity-20 transition-all duration-200"
+      >
+        <ul
+          id="mobile-menu"
+          className="flex h-full w-6/12 min-w-fit flex-col bg-gray-50 p-10 transition-all duration-500"
+        >
+          {menuList.map((menu) => (
+            <li key={menu} className="p-4 text-lg font-semibold">
+              {menu}
+            </li>
+          ))}
+        </ul>
+        <button
+          id="close-btn"
+          className="absolute right-4 top-4 size-10 rounded-full bg-slate-800 text-xl text-white"
+          onClick={closeMobileMenu}
+        >
+          <FontAwesomeIcon icon={faXmark} />
+        </button>
+      </nav>
     </div>
   );
 };
