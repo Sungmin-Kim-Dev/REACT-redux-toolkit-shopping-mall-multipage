@@ -49,32 +49,36 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
   };
   return (
     <div className="sticky top-0 z-10 bg-white pb-6">
-      <div className="relative mr-4 flex items-center justify-end gap-8 p-4">
-        <button
-          className="absolute left-4 top-4 p-2 text-xl sm:hidden"
-          onClick={openMobileMenu}
-        >
-          <FontAwesomeIcon icon={faBars} />
-        </button>
-        <Link to="/" className="absolute left-20 top-4 block w-16 sm:hidden">
-          <img src="./image/logo.png" alt="" />
-        </Link>
-        <div className="search-btn border-b-2 p-1">
-          <FontAwesomeIcon icon={faSearch} className="mr-2" />
-          <input
-            type="text"
-            placeholder="Enter Keywords"
-            className="w-32 focus-visible:outline-0"
-            onKeyDown={(event) => search(event)}
-          />
+      <div className="h-20 mr-4 flex items-center justify-between p-4">
+        <div className='flex'>
+          <button
+            className="left-4 top-4 p-2 text-xl sm:hidden"
+            onClick={openMobileMenu}
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+          <Link to="/" className="left-14 top-4 block w-16 sm:hidden">
+            <img src="./image/logo.png" alt="" />
+          </Link>
         </div>
-        <button
-          onClick={() => loginButton()}
-          className="login-btn flex items-center gap-2"
-        >
-          <FontAwesomeIcon icon={faUser} />
-          <span>Log {authenticate ? "out" : "in"}</span>
-        </button>
+        <div className='flex justify-end flex-wrap-reverse gap-x-4 sm:gap-x-8'>
+          <div className="search-btn border-b-2 p-1">
+            <FontAwesomeIcon icon={faSearch} className="mr-2" />
+            <input
+              type="text"
+              placeholder=" Enter Keywords"
+              className="max-w-32 focus-visible:outline-0"
+              onKeyDown={(event) => search(event)}
+            />
+          </div>
+          <button
+            onClick={() => loginButton()}
+            className="login-btn flex items-center gap-2"
+          >
+            <FontAwesomeIcon icon={faUser} />
+            <span>Log {authenticate ? "out" : "in"}</span>
+          </button>
+        </div>
       </div>
       <Link to="/" className="mx-auto hidden w-16 sm:block">
         <img src="./image/logo.png" alt="" />

@@ -12,12 +12,14 @@ const ItemCard = ({ item }) => {
       className="group/item cursor-pointer shadow-lg"
       onClick={showDetailPage}
     >
-      <img
-        src={item?.img}
-        alt={item?.title}
-        className="mb-2 transition-all duration-300 group-hover/item:scale-105"
-      />
-      <div className="text-box space-y-1 p-4">
+      <div className="img-box overflow-hidden mb-2">
+        <img
+          src={item?.img}
+          alt={item?.title}
+          className="transition-all duration-300 group-hover/item:scale-110"
+        />
+      </div>
+      <div className="text-box space-y-1 p-4 z-10">
         <div
           className={`text-xs text-red-400 ${item?.choice ? "invisible" : ""}`}
         >
