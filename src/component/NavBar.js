@@ -49,7 +49,7 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
   };
   return (
     <div className="sticky top-0 z-10 bg-white pb-6">
-      <div className="h-20 mr-4 flex items-center justify-between p-4">
+      <div className="h-20 flex items-center justify-between p-4">
         <div className='flex'>
           <button
             className="left-4 top-4 p-2 text-xl sm:hidden"
