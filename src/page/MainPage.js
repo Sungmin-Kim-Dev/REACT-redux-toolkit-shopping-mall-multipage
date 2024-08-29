@@ -1,23 +1,19 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ItemCard from "../component/ItemCard";
 import { useSearchParams } from "react-router-dom";
+import productAction from "../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const MainPage = () => {
-  const [productList, setProductList] = useState([]);
+  const productList = useSelector((state) => state.product.productList);
   // eslint-disable-next-line no-unused-vars
   const [query, setQuery] = useSearchParams();
-  const getProducts = async () => {
+  const dispatch = useDispatch();
+
+  const getProducts = () => {
     const searchQuery = query.get("q") || "";
-    console.log(searchQuery);
-    // const url = `http://localhost:3004/products/?q=${searchQuery}`;
-    const url = `https://my-json-server.typicode.com/Sungmin-Kim-Dev/REACT-shopping-mall-multipage/products?q=${searchQuery}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    // console.table(data);
-    setProductList(data);
-    console.table(productList);
-    // productList.map((i) => console.log(i.id));
+    dispatch(productAction.getProducts(searchQuery));
   };
 
   useEffect(() => {

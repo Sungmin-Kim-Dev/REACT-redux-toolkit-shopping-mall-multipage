@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FavoriteBtn from "../component/FavoriteBtn";
+import { useDispatch, useSelector } from "react-redux";
+import productAction from "../redux/actions/productAction";
 
 const ItemDetail = () => {
   const { id } = useParams();
+  const item = useSelector((state) => state.product.item);
   const [selectedSize, setSelectedSize] = useState("");
   const [favorites, setFavorites] = useState(false);
   const addToFavorites = () => {
     favorites ? setFavorites(false) : setFavorites(true);
     // console.log("favorite:", favorites);
   };
-  const [item, setItem] = useState();
-  const getItemDetail = async () => {
-    // const url = `http://localhost:3004/products/${id}`;
-    const url = `https://my-json-server.typicode.com/Sungmin-Kim-Dev/REACT-shopping-mall-multipage/products/${id}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    // console.log(data);
-    setItem(data);
+  const dispatch = useDispatch();
+
+  const getItemDetail = () => {
+    dispatch(productAction.getItemDetail(id));
   };
 
   useEffect(() => {

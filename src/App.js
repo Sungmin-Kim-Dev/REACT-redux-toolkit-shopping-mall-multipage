@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import MainPage from "./page/MainPage";
 import Login from "./page/Login";
 import NavBar from "./component/NavBar";
 import PrivateRoute from "./route/PrivateRoute";
+import { useSelector } from "react-redux";
 
 // 1. Pages: main, Log in, item detail
 // 2. Main page shows all items.
@@ -15,26 +16,17 @@ import PrivateRoute from "./route/PrivateRoute";
 // 7. Items can be searched with keywords.
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false);
+  const authenticate = useSelector((state) => state.auth.authenticate);
   useEffect(() => {
     console.log("Authenticate:", authenticate);
   }, [authenticate]);
   return (
     <div className="App">
-      <NavBar
-        authenticate={authenticate}
-        setAuthenticate={setAuthenticate}
-      ></NavBar>
+      <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
-        <Route
-          path="/login"
-          element={<Login setAuthenticate={setAuthenticate} />}
-        ></Route>
-        <Route
-          path="/item/:id"
-          element={<PrivateRoute authenticate={authenticate} />}
-        ></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/item/:id" element={<PrivateRoute />}></Route>
       </Routes>
     </div>
   );

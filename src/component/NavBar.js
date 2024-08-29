@@ -6,11 +6,16 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import authenticateAction from "../redux/actions/authenticateAction";
+import { useSelector } from "react-redux";
 
-const NavBar = ({ authenticate, setAuthenticate }) => {
+const NavBar = () => {
+  const authenticate = useSelector((state) => state.auth.authenticate);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const loginButton = () => {
-    authenticate ? setAuthenticate(false) : navigate("/login");
+    authenticate ? dispatch(authenticateAction.logout()) : navigate("/login");
   };
 
   const menuList = [
@@ -49,8 +54,8 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
   };
   return (
     <div className="sticky top-0 z-10 bg-white pb-6">
-      <div className="h-20 flex items-center justify-between p-4">
-        <div className='flex'>
+      <div className="flex h-20 items-center justify-between p-4">
+        <div className="flex">
           <button
             className="left-4 top-4 p-2 text-xl sm:hidden"
             onClick={openMobileMenu}
@@ -61,7 +66,7 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
             <img src="./image/logo.png" alt="" />
           </Link>
         </div>
-        <div className='flex justify-end flex-wrap-reverse gap-x-4 sm:gap-x-8'>
+        <div className="flex flex-wrap-reverse justify-end gap-x-4 sm:gap-x-8">
           <div className="search-btn border-b-2 p-1">
             <FontAwesomeIcon icon={faSearch} className="mr-2" />
             <input

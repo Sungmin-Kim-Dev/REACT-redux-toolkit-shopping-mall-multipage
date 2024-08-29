@@ -1,13 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import authenticateAction from "../redux/actions/authenticateAction";
 
-const Login = ({ setAuthenticate }) => {
+const Login = () => {
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const loginUser = (e) => {
     e.preventDefault();
-    setAuthenticate(true);
+    // setAuthenticate(true);
+    dispatch(authenticateAction.login(id, password));
     navigate("/");
   };
   return (
@@ -28,6 +34,7 @@ const Login = ({ setAuthenticate }) => {
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-red-500 focus:ring-red-500"
             placeholder="name@company.com"
             // required
+            onChange={(e) => setId(e.target.value)}
           />
         </div>
         <div>
@@ -44,6 +51,7 @@ const Login = ({ setAuthenticate }) => {
             placeholder="••••••••"
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-red-500 focus:ring-red-500"
             // required
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="flex items-start">
