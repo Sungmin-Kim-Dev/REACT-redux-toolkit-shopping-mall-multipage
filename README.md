@@ -1,9 +1,12 @@
+# Refactoring with Redux Toolkit
+
 ## Refactoring a existing project with Redux Middleware
 
 ## Shopping mall multi-page Website with REACT, Tailwind
 
 ### This Project uses:
 
+Redux Toolkit
 Redux Middleware (Thunk)
 REACT, REACT Router, TailwindCSS, JSON Server
 
