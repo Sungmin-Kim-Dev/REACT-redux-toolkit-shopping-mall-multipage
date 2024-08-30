@@ -5,7 +5,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import authenticateReducer from "./reducers/authenticateReducer";
-import ProductReducer from "./reducers/ProductReducer";
+import ProductReducer from "./reducers/ProductSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,12 +14,10 @@ const store = configureStore({
   },
 });
 
-
 // const store = createStore(
 //   rootReducer,
 //   composeWithDevTools(applyMiddleware(thunk)),
 // );
-
 
 // combineReducer
 // thunk

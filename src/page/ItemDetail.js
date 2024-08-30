@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FavoriteBtn from "../component/FavoriteBtn";
 import { useDispatch, useSelector } from "react-redux";
-import productAction from "../redux/actions/productAction";
+import { getItemDetail } from "../redux/reducers/ProductSlice";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -14,14 +14,10 @@ const ItemDetail = () => {
     // console.log("favorite:", favorites);
   };
   const dispatch = useDispatch();
-
-  const getItemDetail = () => {
-    dispatch(productAction.getItemDetail(id));
-  };
-
   useEffect(() => {
-    getItemDetail();
+    dispatch(getItemDetail(id));
   }, []);
+
   return (
     <div className="col container mx-auto mb-20 flex flex-col gap-4 sm:flex-row">
       <div className="flex-1">
